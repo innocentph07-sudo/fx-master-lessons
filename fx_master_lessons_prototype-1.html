@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b1220">
+<title>Fx Master Lessons</title>
+<style>
+:root{--bg:#0b1220;--panel:#121d30;--panel2:#18263c;--text:#f4f7fb;--muted:#a7b5c9;--green:#36d399;--gold:#f6c667;--red:#ff7777;--line:#293950}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#0b1220,#0e1829 55%,#0b1220);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.5}
+button{font:inherit;cursor:pointer}.app{max-width:1040px;margin:auto;padding:18px 16px 40px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:24px}.brand{display:flex;gap:11px;align-items:center}.logo{width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,#36d399,#147a70);display:grid;place-items:center;font-size:22px;font-weight:900;color:#082019}.brand h1{font-size:18px;margin:0;letter-spacing:-.4px}.brand p{margin:0;color:var(--muted);font-size:12px}.pill{font-size:12px;color:var(--green);border:1px solid #276b5c;background:#123329;padding:6px 10px;border-radius:99px;white-space:nowrap}
+.hero{border:1px solid #28405a;border-radius:24px;padding:25px;background:radial-gradient(ellipse at 95% 0%,#1c493f 0%,transparent 43%),linear-gradient(135deg,#15253a,#101a2b);overflow:hidden}.eyebrow{font-size:11px;letter-spacing:1.7px;color:var(--green);font-weight:800;text-transform:uppercase}.hero h2{font-size:clamp(27px,5vw,43px);line-height:1.08;letter-spacing:-1.5px;margin:12px 0}.hero p{color:#c1cddd;max-width:590px;margin:0 0 19px}.actions{display:flex;flex-wrap:wrap;gap:10px}.btn{border:0;border-radius:12px;padding:11px 15px;font-weight:750}.primary{background:var(--green);color:#082219}.secondary{background:#23344a;color:#f4f7fb;border:1px solid #344a63}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:15px 0 27px}.stat{padding:14px;border-radius:15px;background:#101b2c;border:1px solid var(--line)}.stat strong{display:block;font-size:21px}.stat span{font-size:12px;color:var(--muted)}
+.sectionhead{display:flex;align-items:end;justify-content:space-between;gap:10px;margin:24px 0 12px}.sectionhead h3{margin:0;font-size:20px}.sectionhead p{margin:3px 0 0;color:var(--muted);font-size:13px}.progresswrap{height:7px;background:#26364a;border-radius:9px;overflow:hidden;margin-top:10px}.progressbar{height:100%;width:0;background:var(--green);transition:width .25s}
+.layout{display:grid;grid-template-columns:1.2fr .8fr;gap:14px}.panel{background:rgba(18,29,48,.92);border:1px solid var(--line);border-radius:18px;padding:17px}.lessonlist{display:grid;gap:9px}.lesson{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:#152238;border:1px solid #263a53;border-radius:14px;padding:12px;color:var(--text)}.lesson.active{border-color:var(--green);background:#14302e}.lesson.locked{opacity:.82}.num{width:35px;height:35px;flex:none;border-radius:11px;background:#263a50;display:grid;place-items:center;font-weight:800;color:#d9e4ef}.lesson.active .num{background:var(--green);color:#082219}.ltxt{flex:1}.ltxt strong{display:block;font-size:14px}.ltxt small{color:var(--muted);font-size:12px}.mark{font-size:18px}
+.lessoncontent h3{font-size:22px;margin:7px 0}.lessoncontent p{color:#c5d0df}.callout{border-left:3px solid var(--gold);background:#2a2a27;padding:12px;border-radius:0 10px 10px 0;color:#f3e6c6;font-size:13px;margin:15px 0}.quiz{margin-top:16px;padding-top:15px;border-top:1px solid var(--line)}.quiz h4{margin:0 0 10px}.choice{display:block;width:100%;text-align:left;background:#17263b;border:1px solid #2b4059;color:var(--text);padding:10px 12px;border-radius:11px;margin:7px 0}.choice:hover{border-color:#6a8ba9}.choice.correct{border-color:var(--green);background:#14352f}.choice.wrong{border-color:var(--red);background:#3a242d}.feedback{font-size:13px;margin-top:8px;color:var(--muted);min-height:20px}
+.premium{background:linear-gradient(145deg,#302a1e,#1b2434);border:1px solid #6c5b35;border-radius:18px;padding:18px;margin-top:15px}.premium h3{margin:0 0 5px}.premium p{color:#d3c8ad;font-size:13px;margin:0 0 12px}.price{font-size:25px;font-weight:850;color:var(--gold)}.price small{font-size:12px;font-weight:500;color:#d3c8ad}.featurelist{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0;color:#e5dcc9;font-size:13px}.featurelist span:before{content:"✓ ";color:var(--green);font-weight:900}.note{font-size:11px;color:var(--muted);margin-top:11px}.footer{margin-top:26px;text-align:center;color:#8192a9;font-size:12px}.toast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:#1d3044;border:1px solid #3b5672;padding:10px 14px;border-radius:12px;display:none;max-width:90%;font-size:13px;z-index:5}
+@media(max-width:720px){.layout{grid-template-columns:1fr}.hero{padding:21px}.stats{gap:7px}.stat{padding:11px}.stat strong{font-size:18px}.top{align-items:flex-start}.featurelist{grid-template-columns:1fr}.sectionhead{align-items:start;flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="top">
+  <div class="brand"><div class="logo">Fx</div><div><h1>Fx Master Lessons</h1><p>Learn the market. Practise safely.</p></div></div>
+  <div class="pill">● Beginner mode</div>
+</header>
+<section class="hero">
+  <div class="eyebrow">Your trading learning path</div>
+  <h2>Build your knowledge.<br>One lesson at a time.</h2>
+  <p>Learn forex basics, understand candlesticks, and practise your knowledge before you ever risk real money.</p>
+  <div class="actions"><button class="btn primary" onclick="startLearning()">Start learning →</button><button class="btn secondary" onclick="showPremium()">Explore Premium</button></div>
+</section>
+<section class="stats">
+  <div class="stat"><strong id="completedCount">0 / 3</strong><span>Free lessons completed</span></div>
+  <div class="stat"><strong id="progressPercent">0%</strong><span>Your progress</span></div>
+  <div class="stat"><strong>Demo only</strong><span>No real-money trades</span></div>
+</section>
+<div class="sectionhead"><div><h3>Your lessons</h3><p>Start with the free foundations, then continue when ready.</p></div></div>
+<div class="layout">
+  <section class="panel">
+    <div class="lessonlist" id="lessonList"></div>
+    <div class="progresswrap"><div class="progressbar" id="progressBar"></div></div>
+  </section>
+  <section class="panel lessoncontent" id="lessonContent" aria-live="polite"></section>
+</div>
+<section class="premium" id="premium">
+  <div class="eyebrow" style="color:var(--gold)">Fx Master Plus</div>
+  <h3>Unlock the next level</h3>
+  <p>Go deeper with structured lessons and guided practice exercises.</p>
+  <div class="price">Subscription <small>· price to be configured</small></div>
+  <div class="featurelist"><span>Support & resistance</span><span>Trend analysis</span><span>Risk management</span><span>Practice scenarios</span><span>Advanced quizzes</span><span>Progress tracking</span></div>
+  <button class="btn primary" onclick="subscribeInfo()">See subscription options</button>
+  <div class="note">Demo preview only: payment processing and account access are not connected yet.</div>
+</section>
+<div class="footer">Education only — not financial advice. Forex and CFDs involve significant risk; lessons do not guarantee profits.</div>
+</div>
+<div class="toast" id="toast" role="status"></div>
+<script>
+const lessons=[
+ {title:"Forex in simple words",level:"FREE · 4 min",free:true,body:[
+  "Forex means foreign exchange: buying one currency while selling another. Currency pairs are written with two codes, such as EUR/USD.",
+  "The first currency is the base currency and the second is the quote currency. If EUR/USD is 1.0800, one euro is quoted at 1.08 US dollars.",
+  "Prices can rise or fall quickly. Learning terms is not the same as being ready to trade."
+ ],tip:"Remember: a currency pair compares the value of one currency with another.",question:"What does EUR/USD represent?",options:["The euro compared with the US dollar","The price of gold in euros","Two stock-market companies"],answer:0,explain:"Correct. EUR is the base currency and USD is the quote currency."},
+ {title:"Read a candlestick",level:"FREE · 5 min",free:true,body:[
+  "A candlestick shows price movement over a chosen period. On many charts, a green candle means the close was higher than the open; a red candle means the close was lower than the open.",
+  "The thick part is called the body. The thin lines are wicks (or shadows), showing the high and low reached during that period.",
+  "A candle alone cannot tell you what the market will do next. Always look at context and remember that candles change before the period closes."
+ ],tip:"On an M15 chart, each candle represents 15 minutes. The current candle can change colour before it closes.",question:"What does the wick of a candle show?",options:["Only the opening price","The high and low reached during the period","The broker's fee"],answer:1,explain:"Correct. The wick marks the high and low reached in that candle's period."},
+ {title:"Timeframes & practice safety",level:"FREE · 4 min",free:true,body:[
+  "A timeframe tells you how much time one candle represents. M5 is five minutes, M15 is fifteen minutes, and H1 is one hour.",
+  "Shorter timeframes often show more price noise. Comparing a few timeframes can help you understand the bigger picture, but it does not remove risk.",
+  "Practise by observing charts or using a demo account with virtual funds. Never use money needed for food, rent, school, or bills."
+ ],tip:"Safe practice rule: no real-money trades are needed to complete this course.",question:"What does M15 mean on a chart?",options:["A candle represents 15 minutes","The market closes in 15 minutes","The account contains 15 dollars"],answer:0,explain:"Correct. Each M15 candle represents a 15-minute period."},
+ {title:"Support & resistance",level:"PLUS · 7 min",free:false,body:["Support is an area where price has previously struggled to move lower. Resistance is an area where price has previously struggled to move higher.","These are zones, not perfect lines. Price can break through them, and previous reactions do not guarantee future behaviour."],tip:"This premium lesson is a preview. A real subscription system must be connected before paid access can be enabled.",question:"Support is best described as…",options:["A guaranteed floor","An area where price has previously found buying interest","A signal that price must rise"],answer:1,explain:"Correct. Support is an area, not a guarantee."},
+ {title:"Risk management basics",level:"PLUS · 6 min",free:false,body:["Risk management is about limiting potential losses, not guaranteeing profits.","Learn what leverage does, why stop-loss orders can fail to fill at the expected price during fast markets, and why risking money you cannot afford to lose is dangerous."],tip:"Education first: practise calculating hypothetical risk without placing a trade.",question:"Does risk management guarantee a winning trade?",options:["Yes, always","Only on M15","No, it can help limit risk but cannot guarantee a win"],answer:2,explain:"Correct. No method can guarantee a profit."}
+];
+let current=0,completed=new Set(JSON.parse(localStorage.getItem("fxmaster_completed")||"[]")),unlocked=false;
+function renderList(){
+ const list=document.getElementById("lessonList");list.innerHTML="";
+ lessons.forEach((l,i)=>{const locked=!l.free&&!unlocked;const b=document.createElement("button");b.className="lesson"+(i===current?" active":"")+(locked?" locked":"");b.innerHTML=`<span class="num">${completed.has(i)?"✓":(locked?"🔒":String(i+1).padStart(2,"0"))}</span><span class="ltxt"><strong>${l.title}</strong><small>${l.level}</small></span><span class="mark">${completed.has(i)?"✓":(locked?"›":"→")}</span>`;b.onclick=()=>{if(locked){showPremium();toast("This lesson is part of Fx Master Plus.");return;}current=i;renderList();renderLesson();};list.appendChild(b)});
+ const count=[0,1,2].filter(i=>completed.has(i)).length;document.getElementById("completedCount").textContent=count+" / 3";document.getElementById("progressPercent").textContent=Math.round(count/3*100)+"%";document.getElementById("progressBar").style.width=(count/3*100)+"%";
+}
+function renderLesson(){
+ const l=lessons[current],box=document.getElementById("lessonContent");let paragraphs=l.body.map(p=>`<p>${p}</p>`).join("");
+ box.innerHTML=`<div class="eyebrow">${l.level}</div><h3>${l.title}</h3>${paragraphs}<div class="callout">💡 ${l.tip}</div><div class="quiz"><h4>Quick check</h4><p>${l.question}</p><div id="choices">${l.options.map((o,i)=>`<button class="choice" onclick="answer(${i})">${String.fromCharCode(65+i)}. ${o}</button>`).join("")}</div><div class="feedback" id="feedback"></div><div class="actions" style="margin-top:12px"><button class="btn primary" id="completeBtn" style="display:none" onclick="markComplete()">Mark lesson complete ✓</button>${current<2?`<button class="btn secondary" onclick="nextFree()">Next lesson →</button>`:""}</div></div>`;
+}
+function answer(n){const l=lessons[current],buttons=document.querySelectorAll(".choice"),fb=document.getElementById("feedback");buttons.forEach((b,i)=>{b.disabled=true;if(i===l.answer)b.classList.add("correct");else if(i===n)b.classList.add("wrong")});fb.textContent=(n===l.answer?"Correct! ":"Not quite. ")+l.explain;document.getElementById("completeBtn").style.display="inline-block";}
+function markComplete(){completed.add(current);localStorage.setItem("fxmaster_completed",JSON.stringify([...completed]));renderList();toast("Lesson progress saved on this device.");}
+function nextFree(){current=Math.min(2,current+1);renderList();renderLesson();}
+function startLearning(){current=0;renderList();renderLesson();document.querySelector(".sectionhead").scrollIntoView({behavior:"smooth"});}
+function showPremium(){document.getElementById("premium").scrollIntoView({behavior:"smooth",block:"center"});}
+function subscribeInfo(){toast("Payments aren't connected yet. This preview won't charge you.");}
+function toast(msg){const t=document.getElementById("toast");t.textContent=msg;t.style.display="block";clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>t.style.display="none",3000);}
+renderList();renderLesson();
+</script>
+</body></html>
